@@ -1,57 +1,63 @@
-import React from "react"
-import SearchPresenter from "./SearchPresenter"
-import {moviesApi, tvApi} from "../../api"
+import React from 'react';
+import SearchPresenter from './SearchPresenter';
+import { moviesApi, tvApi } from '../../api';
 
-export default class extends React.Component{
+export default class extends React.Component {
   state = {
     movieResults: null,
     tvResults: null,
     searchTerm: 'code',
     loading: false,
-    error: null
-  }
+    error: null,
+  };
 
   componentDidMount() {
-    this.handleSubmit()
+    this.handleSubmit();
   }
 
   handleSubmit = () => {
-    const { searchTerm } = this.state
-    if (searchTerm !== "") {
-      this.searchByTerm(searchTerm)
+    const { searchTerm } = this.state;
+    if (searchTerm !== '') {
+      this.searchByTerm(searchTerm);
     }
-  }
+  };
 
   searchByTerm = async (term) => {
-    const { searchTerm } = this.state
-    this.setState({ loading: true })
+    const { searchTerm } = this.state;
+    this.setState({ loading: true });
     try {
-      const { data: { results: movieResults } } = await moviesApi.search(searchTerm)
-      const { data: { results: tvResults } } = await tvApi.search(searchTerm)
+      const {
+        data: { results: movieResults },
+      } = await moviesApi.search(searchTerm);
+      const {
+        data: { results: tvResults },
+      } = await tvApi.search(searchTerm);
 
       this.setState({
         movieResults,
-        tvResults
-      })
+        tvResults,
+      });
     } catch {
-      this.setState({ error: "Can't find Search" })
+      this.setState({ error: "Can't find Search" });
     } finally {
       this.setState({
-        loading: false
-      })
+        loading: false,
+      });
     }
-  }
+  };
 
-  render () {
-    const { movieResults, tvResults, searchTerm, loading, error } = this.state
-    console.log(movieResults, tvResults)
-    return <SearchPresenter
-      movieResults={movieResults}
-      tvResult={tvResults}
-      searchTerm={searchTerm}
-      loading={loading}
-      error={error}
-      handleSubmit={this.handleSubmit}
-    />
+  render() {
+    const { movieResults, tvResults, searchTerm, loading, error } = this.state;
+    console.log(movieResults, tvResults);
+    return (
+      <SearchPresenter
+        movieResults={movieResults}
+        tvResult={tvResults}
+        searchTerm={searchTerm}
+        loading={loading}
+        error={error}
+        handleSubmit={this.handleSubmit}
+      />
+    );
   }
 }
