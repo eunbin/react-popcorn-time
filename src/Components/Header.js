@@ -1,4 +1,5 @@
 import React from "react";
+// withRouter: header 컴포넌트는 현재 위치를 알고 있도록
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
