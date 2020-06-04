@@ -13,7 +13,7 @@ api.interceptors.request.use(config => {
 
 export const moviesApi = {
   nowPlaying: () => api.get("movie/now_playing"),
-  upcoming: () => api.get("movie/now_playing"),
+  upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: id =>
     api.get(`movie/${id}`, {
@@ -28,9 +28,9 @@ export const moviesApi = {
   }),
 }
 
-export const TVApi = {
+export const tvApi = {
   topRated: () => api.get("tv/top_rated"),
-  upcoming: () => api.get("tv/now_playing"),
+  popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
   tvDetail: (id) => api.get(`tv/${id}`, {
     params: {
