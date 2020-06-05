@@ -40,15 +40,15 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-    const { nowPlaying, upcoming, popular, error, state } = this.state;
+    const { nowPlaying, upcoming, popular, error, loading } = this.state;
     console.log(this.state);
     return (
       <HomePresenter
         nowPlaying={nowPlaying}
         upcoming={upcoming}
         popular={popular}
+        loading={loading}
         error={error}
-        state={state}
       />
     );
   }

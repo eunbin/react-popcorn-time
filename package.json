@@ -14,17 +14,18 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "styled-reset": "^4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx --ext .js src/",
-    "lint:fix": "eslint --fix --ext .jsx --ext .js src/",
-    "format:check": "prettier --check ./src",
-    "format": "prettier --write ./src"
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint --fix 'src/**/*.js'",
+    "format:check": "prettier --check 'src/**/*.js'",
+    "format": "prettier --write 'src/**/*.js'"
   },
   "husky": {
     "hooks": {
@@ -32,46 +33,14 @@
     }
   },
   "lint-staged": {
-    "src/**/*.(js|jsx)": [
-      "eslint --fix",
-      "prettier --write"
+    "src/**/*.js": [
+      "yarn lint --fix",
+      "prettier --write",
+      "git add"
     ],
-    "*.(json|css|md)": [
+    "*.{json,css,md}": [
       "prettier --write"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "airbnb",
-      "prettier"
-    ],
-    "rules": {
-      "react/prefer-stateless-function": 0,
-      "react/jsx-filename-extension": 0,
-      "react/jsx-one-expression-per-line": 0,
-      "react/prop-types": 0,
-      "react/state-in-constructor": 0,
-      "radix": 0,
-      "no-restricted-globals": 0,
-      "no-console": 1,
-      "no-param-reassign": 0
-    },
-    "env": {
-      "browser": true
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [
-            ".js",
-            ".jsx",
-            ".ts",
-            ".tsx"
-          ]
-        }
-      }
-    }
   },
   "browserslist": {
     "production": [
@@ -87,6 +56,6 @@
   },
   "devDependencies": {
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.8"
+    "lint-staged": "^10.2.9"
   }
 }
