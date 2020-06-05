@@ -62,7 +62,7 @@ export default class extends React.Component {
     return (
       <SearchPresenter
         movieResults={movieResults}
-        tvResult={tvResults}
+        tvResults={tvResults}
         searchTerm={searchTerm}
         loading={loading}
         error={error}
