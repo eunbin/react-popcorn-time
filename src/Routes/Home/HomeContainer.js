@@ -1,6 +1,6 @@
 import React from 'react';
+import { moviesApi } from 'api';
 import HomePresenter from './HomePresenter';
-import { moviesApi } from '../../api';
 
 class HomeContainer extends React.Component {
   state = {

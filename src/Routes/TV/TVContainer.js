@@ -1,6 +1,6 @@
 import React from 'react';
+import { tvApi } from 'api';
 import TVPresenter from './TVPresenter';
-import { tvApi } from '../../api';
 
 export default class extends React.Component {
   state = {
@@ -14,13 +14,13 @@ export default class extends React.Component {
   async componentDidMount() {
     try {
       const {
-        data: { result: topRated },
+        data: { results: topRated },
       } = await tvApi.topRated();
       const {
-        data: { result: popular },
+        data: { results: popular },
       } = await tvApi.popular();
       const {
-        data: { result: airingToday },
+        data: { results: airingToday },
       } = await tvApi.airingToday();
       this.setState({
         topRated,
